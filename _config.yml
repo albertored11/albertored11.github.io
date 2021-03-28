@@ -30,15 +30,15 @@ author: Alberto Redondo                 # change to your full name
 # github:
 #   username: albertored11                # change to your github username
 
-twitter:
-  username: albertored_                 # change to your twitter username
+# twitter:
+#   username:                             # change to your twitter username
 
 social:
   name: Alberto Redondo                 # it will shows as the copyright owner in Footer
   email: herbort@herbort.me             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/albertored_   # change to your twitter homepage
+    # - https://twitter.com/   # change to your twitter homepage
     - https://github.com/albertored11   # change to your github homepage
     - https://www.linkedin.com/in/albertoredg/
     # Uncomment below to add more social links
