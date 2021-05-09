@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "jekyll-theme-chirpy", "~> 3.2"
+gem "jekyll-theme-chirpy", "~> 4.0", ">= 4.0.1"
 
 group :jekyll_plugins do
   # If you have any plugins, put them here!
@@ -20,6 +20,3 @@ end
 
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
-
-# Liquid tag for displaying GitHub Gists
-gem 'jekyll-gist'
