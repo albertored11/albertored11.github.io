@@ -3,6 +3,7 @@
 -
   type: github
   icon: 'fab fa-github'
+  url: 'https://github.com/albertored11'
 -
   type: twitter
   icon: 'fab fa-twitter'
@@ -23,7 +24,7 @@
 # -
 #   type: linkedin
 #   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
+#   url:  'https://www.linkedin.com/in/albertoredg/'                  # Fill with your Linkedin homepage
 # -
 #   type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
