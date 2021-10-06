@@ -5,8 +5,12 @@
   icon: 'fab fa-github'
   url: 'https://github.com/albertored11'
 -
-  type: twitter
-  icon: 'fab fa-twitter'
+  type: linkedin
+  icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+  url:  'https://www.linkedin.com/in/albertoredg/'                  # Fill with your Linkedin homepage
+#-
+#  type: twitter
+#  icon: 'fab fa-twitter'
 -
   type: email
   icon: 'fas fa-envelope'
@@ -21,10 +25,6 @@
 #   type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your mastodon account page
-# -
-#   type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  'https://www.linkedin.com/in/albertoredg/'                  # Fill with your Linkedin homepage
 # -
 #   type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
