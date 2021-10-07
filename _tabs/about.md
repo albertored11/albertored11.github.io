@@ -30,7 +30,7 @@ I've always wanted to have my own website. Nothing too special, but personal. My
 
 Feel free to share my posts!
 
-You can contact me anytime: [herbort@herbort.me](mailto:herbort@herbort.me).
+You can contact me anytime: [albertomost@gmail.com](mailto:albertomost@gmail.com).
 
 ## `$ whereis herbort` (Where else you can find me?)
 
