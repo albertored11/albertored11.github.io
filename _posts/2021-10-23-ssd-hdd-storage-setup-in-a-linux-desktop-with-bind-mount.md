@@ -228,7 +228,7 @@ Check `/etc/fstab` file manually to verify everything is **correct** and **well-
 sudo mount -a
 ```
 
-If it works properly, now follow the guide for a new installation starting from [here](#Prepare bind mountpoints) but, instead of creating directories in `/mnt/home/myuser`, move them from `/home/myuser` and create empty directories in the latter:
+If it works properly, now follow the guide for a new installation starting from [here](#prepare-bind-mountpoints) but, instead of creating directories in `/mnt/home/myuser`, move them from `/home/myuser` and create empty directories in the latter:
 
 skip
 
@@ -305,7 +305,7 @@ mkdir -p /home/myuser/{Documents,Music,Pictures,Videos}
 chown myuser:myuser /home/myuser/{Documents,Music,Pictures,Videos}
 ```
 
-Now, **reboot** your system and log in as your regular user and follow the guide for a new installation starting from [here](#Define bind mountpoints).
+Now, **reboot** your system and log in as your regular user and follow the guide for a new installation starting from [here](#define-bind-mountpoints).
 
 # Conclusion
 
