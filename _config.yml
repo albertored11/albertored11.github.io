@@ -81,7 +81,7 @@ theme_mode:   # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: ''
+img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
 avatar: 'https://avatars.githubusercontent.com/u/38332200'
@@ -161,7 +161,7 @@ exclude:
   - LICENSE
   - gulpfile.js
   - node_modules
-  - '*.json'
+  - package.json
 
 jekyll-archives:
   enabled: [categories, tags]
