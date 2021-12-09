@@ -124,3 +124,5 @@ We have to save the hook file in `/usr/share/libalpm/hooks`, so it gets triggere
 I hope this way of cleaning pacman and yay caches is useful for you and, of course, I appreciate any suggestions and comments.
 
 You can find both files in this [gist](https://gist.github.com/albertored11/bfc0068f4e43ca0d7ce0af968f7314db)!
+
+{% include giscus.html %}

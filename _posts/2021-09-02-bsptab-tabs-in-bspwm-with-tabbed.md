@@ -89,3 +89,5 @@ I created
 [**a post**](https://www.reddit.com/r/bspwm/comments/pfajrd/bsptab_tabs_in_bspwm_with_tabbed/)
 in the [r/bspwm](https://www.reddit.com/r/bspwm/) subreddit, so, if you prefer,
 leave a comment there.
+
+{% include giscus.html %}

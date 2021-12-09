@@ -310,3 +310,5 @@ Now, **reboot** your system and log in as your regular user and follow the guide
 # Conclusion
 
 And that's all! I hope you find this setup useful and, as always, reach me out at albertomost@gmail.com if you have any questions, suggestions, etc.
+
+{% include giscus.html %}
