@@ -59,8 +59,8 @@ not_found:
 # ----- Posts related labels -----
 
 post:
-  published: 'on'
-  updated: Updated
+  written_by: By
+  posted: Posted
   timeago:
     day: days ago
     hour: hours ago
