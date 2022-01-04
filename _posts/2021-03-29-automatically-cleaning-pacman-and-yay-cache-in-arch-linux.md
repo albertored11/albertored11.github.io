@@ -17,8 +17,8 @@ pacman features an operation for cleaning cache of uninstalled packages, `pacman
 
 Running `paccache -rk2`, we clean the package cache keeping just the two latest versions of each package. Furthermore, we can use `-u` option for cleaning just the cache of uninstalled packages so if, for example, we want to keep the two latest versions for installed packages and just the latest for uninstalled packages (in case we want to reinstall them in the future, for example for make dependencies of AUR packages), we could run:
 
-```bash
-paccache -rk2 && paccache -ruk1
+```console
+$ paccache -rk2 && paccache -ruk1
 ```
 
 ## Cleaning yay cache
@@ -29,8 +29,8 @@ AUR does not store binary packages, but scripts called `PKGBUILD`s that download
 
 yay has an operation `-Sc` similar to pacman's but, again, `paccache` seems more interesting. This script has an option, `-c` for specifying cache location, so we can write the cache directory for every package installed with yay. For example, if we want to clean yay cache keeping the two latest versions for installed packages and nothing for uninstalled packages, we could run:
 
-```bash
-paccache -rk2 -c ~/.cache/yay/*/ && paccache -ruk0 ~/.cache/yay/*/
+```console
+$ paccache -rk2 -c ~/.cache/yay/*/ && paccache -ruk0 ~/.cache/yay/*/
 ```
 
 However, this command only removes pacman packages, but not other files. It could be interesting to keep source or binary files from installed version (in case we upgrade the package and it uses the same ones as the previous version) and the files from the git repository of the AUR package (otherwise, yay will throw an error when we try to upgrade the package), but not the rest of the source or binary files nor the ones generated during the creation of the package.
@@ -41,14 +41,12 @@ However, this command only removes pacman packages, but not other files. It coul
 
 First of all, install `pacman-contrib` package if you haven't done it yet:
 
-```bash
-sudo pacman -S pacman-contrib
+```console
+$ sudo pacman -S pacman-contrib
 ```
 
 I've written a bash script for easily cleaning both pacman and yay caches, based on 
 [these ones](https://gist.github.com/luukvbaal/2c697b5e068471ee989bff8a56507142) I found on GitHub Gist, created by [luukvbaal](https://gist.github.com/luukvbaal).
-
-`yaycache`
 
 ```bash
 ##!/usr/bin/env bash
@@ -86,6 +84,7 @@ done
 /usr/bin/paccache -qruk1
 /usr/bin/paccache -qrk2 -c /var/cache/pacman/pkg $pkgcache
 ```
+{: file="yaycache"}
 
 It cleans both caches using `paccache`, keeping the two latest versions for installed packages, the latest version for uninstalled packages from official repositories and nothing for uninstalled packages from AUR, it removes the directories of uninstalled packages from AUR located in yay cache and extra files from the directories of insatlled packages, excepting the files tracked by git, the pacman packages and the source or binary files of the installed version.
 
@@ -98,8 +97,6 @@ This script can be useful for cleaning pacman and yay caches, but we haven't rea
 In order to implement automation, I've written a pacman hook, a file that runs a command after installing, removing or upgrading certain packages.
 
 In this case, the script is run after removing or upgrading any package. It does not run after installing a package, because yay installs make dependencies when needed and running the script would remove necessary files and therefore installation would fail.
-
-`yaycache.hook`
 
 ```
 [Trigger]
@@ -114,6 +111,7 @@ When = PostTransaction
 Exec = /home/herbort/.local/bin/yaycache
 Depends = pacman-contrib
 ```
+{: file="yaycache.hook"}
 
 Don't forget to change `Exec` path so it points to the right path where you saved the script.
 

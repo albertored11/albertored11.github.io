@@ -73,8 +73,8 @@ We are using the `cfdisk` tool with this purpose. If your distro uses a graphica
 
 First, we're going to proceed with the SSD:
 
-```bash
-cfdisk /dev/nvme0n1
+```console
+# cfdisk /dev/nvme0n1
 ```
 
 Create a GPT partition table.
@@ -87,15 +87,15 @@ Write changes and quit.
 
 Format partitions accordingly (FAT32 for EFI System Partition as required, and ext4 for the root partition for simplicity):
 
-```bash
-mkfs.ext4 /dev/nvme0n1p2
-mkfs.fat -F32 /dev/nvme0n1p1
+```console
+# mkfs.ext4 /dev/nvme0n1p2
+# mkfs.fat -F32 /dev/nvme0n1p1
 ```
 
 Then, with the HDD:
 
-```bash
-cfdisk /dev/sda
+```console
+# cfdisk /dev/sda
 ```
 
 Create a GPT partition table.
@@ -106,29 +106,29 @@ Write changes and quit.
 
 Format the newly created partition:
 
-```bash
-mkfs.ext4 /dev/sda1
+```console
+# mkfs.ext4 /dev/sda1
 ```
 
 #### Mount partitions
 
 First, mount the root partition:
 
-```bash
-mount /dev/nvme0n1p2 /mnt
+```console
+# mount /dev/nvme0n1p2 /mnt
 ```
 
 Create the mountpoints for the other partitions:
 
-```bash
-mkdir -p /mnt/boot /mnt/mnt/home
+```console
+# mkdir -p /mnt/boot /mnt/mnt/home
 ```
 
 and mount them:
 
-```bash
-mount /dev/nvme0n1p1 /mnt/boot
-mount /dev/sda1 /mnt/mnt/home
+```console
+# mount /dev/nvme0n1p1 /mnt/boot
+# mount /dev/sda1 /mnt/mnt/home
 ```
 
 #### Prepare bind mountpoints
@@ -137,25 +137,25 @@ When the installation process is finished and we have successfully booted up our
 
 First, let's create the standard XDG user directories (you may will the `xdg-user-dirs` package):
 
-```bash
-xdg-user-dirs-update
+```console
+$ xdg-user-dirs-update
 ```
 
 Then, create the directories we're going to bind mount to our `$HOME` in our HDD. My personal choice is `Documents`, `Music`, `Pictures` and `Videos`, but feel free to make yours as needed. Think of which directories are you going to store large files (or a large number of files) that don't need fast access in.
 
 First, create a directory for our user in `/mnt/home` and change the ownership so the directory belongs to it:
 
-```bash
-cd /mnt/home
-sudo mkdir -p myuser
-sudo chown -R myuser:myuser myuser
+```console
+$ cd /mnt/home
+$ sudo mkdir -p myuser
+$ sudo chown -R myuser:myuser myuser
 ```
 
 and after that create the directories themselves:
 
-```bash
-cd myuser
-mkdir -p Documents Music Pictures Videos
+```console
+$ cd myuser
+$ mkdir -p Documents Music Pictures Videos
 ```
 
 #### Define bind mountpoints
@@ -180,8 +180,8 @@ Those lines are telling our system to bind mount `/mnt/home/myuser/Documents` to
 
 Test the setup:
 
-```bash
-sudo mount -a
+```console
+$ sudo mount -a
 ```
 
 and try creating a file in one of the bind mounted directories. For example, if we create a file called `test` in `/home/myuser/Documents`, it should appear in `/mnt/home/myuser/Documents` as well.
@@ -202,46 +202,46 @@ I'm assuming the drive is already partitioned and formatted with a single ext4 p
 
 First of all, if the partition is mounted, unmount it:
 
-```bash
-sudo umount /dev/sda1
+```console
+$ sudo umount /dev/sda1
 ```
 
 Create the mountpoint for the partition:
 
-```bash
-sudo mkdir -p /mnt/home
+```console
+$ sudo mkdir -p /mnt/home
 ```
 
 and append a couple of lines to `/etc/fstab` file to define the mount:
 
-```bash
-sudo bash -c 'echo "# /dev/sda1" >> /etc/fstab'
-sudo bash -c 'echo -e "UUID=$(blkid -s UUID -o value /dev/sda1)\t/mnt/home\text4\t\trw,relatime\t0 2" >> /etc/fstab'
-sudo bash -c 'echo >> /etc/fstab'
+```console
+$ sudo bash -c 'echo "# /dev/sda1" >> /etc/fstab'
+$ sudo bash -c 'echo -e "UUID=$(blkid -s UUID -o value /dev/sda1)\t/mnt/home\text4\t\trw,relatime\t0 2" >> /etc/fstab'
+$ sudo bash -c 'echo >> /etc/fstab'
 ```
 
 If the partition used to be mounted in a different path, remove those lines, too.
 
 Check `/etc/fstab` file manually to verify everything is correct and well-formatted and test the configuration:
 
-```bash
-sudo mount -a
+```console
+$ sudo mount -a
 ```
 
 If it works properly, now follow the guide for a new installation starting from [here](#prepare-bind-mountpoints) but, instead of creating directories in `/mnt/home/myuser`, move them from `/home/myuser` and create empty directories in the latter:
 
 skip
 
-```bash
-cd myuser
-mkdir -p Documents Music Pictures Videos
+```console
+$ cd myuser
+$ mkdir -p Documents Music Pictures Videos
 ```
 
 and instead do
 
-```bash
-mv /home/myuser/{Documents,Music,Pictures,Videos} /mnt/home/myuser
-mkdir -p /home/myuser/{Documents,Music,Pictures,Videos}
+```console
+$ mv /home/myuser/{Documents,Music,Pictures,Videos} /mnt/home/myuser
+$ mkdir -p /home/myuser/{Documents,Music,Pictures,Videos}
 ```
 
 #### Extra drive used for home partition
@@ -254,55 +254,55 @@ I'm assuming the corresponding device for the former home partition is `/dev/sda
 
 Unmount the home partition:
 
-```bash
-umount /dev/sda1
+```console
+# umount /dev/sda1
 ```
 
 Create the mountpoint for the partition:
 
-```bash
-mkdir -p /mnt/home
+```console
+# mkdir -p /mnt/home
 ```
 
 and edit `/etc/fstab` accordingly, replacing `/home` with `/mnt/home`, which is the new mountpoint for our partition:
 
-```bash
-sed -i 's/home/mnt\/home/g' /etc/fstab
+```console
+# sed -i 's/home/mnt\/home/g' /etc/fstab
 ```
 
 Check `/etc/fstab` file manually to verify everything is correct and test the configuration:
 
-```bash
-mount -a
+```console
+# mount -a
 ```
 
 If it works properly, now recreate the home directory for your user in `/home` (and for every other regular user in your system):
 
-```bash
-mkdir -p /home/myuser
-chown myuser:myuser /home/myuser
+```console
+# mkdir -p /home/myuser
+# chown myuser:myuser /home/myuser
 ```
 
 Then, we are going to move everything there except the directories you want to keep in your extra drive. First, enable a couple of shell options for glob matching:
 
-```bash
-shopt -s extglob
-shopt -s dotglob
+```console
+# shopt -s extglob
+# shopt -s dotglob
 ```
 
 Those will let us match everything except certain files or directories, and match hidden files too when using `*` wildcard.
 
 Then move everything inside our home directory except, for example, `Documents`, `Music`, `Pictures` and `Videos`, if those are the directories we want to keep in the extra drive:
 
-```bash
-mv /mnt/home/myuser/!(Documents|Music|Pictures|Videos) /home/myuser
+```console
+# mv /mnt/home/myuser/!(Documents|Music|Pictures|Videos) /home/myuser
 ```
 
 Make empty directories under our home directory for those that are going to stay in the extra drive so we can bind mount them and make them belong to your user:
 
-```bash
-mkdir -p /home/myuser/{Documents,Music,Pictures,Videos}
-chown myuser:myuser /home/myuser/{Documents,Music,Pictures,Videos}
+```console
+# mkdir -p /home/myuser/{Documents,Music,Pictures,Videos}
+# chown myuser:myuser /home/myuser/{Documents,Music,Pictures,Videos}
 ```
 
 Now, reboot your system and log in as your regular user and follow the guide for a new installation starting from [here](#define-bind-mountpoints).
