@@ -4,13 +4,13 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-**New:** check out my [**online CV**](https://cv.herbort.me)!
+Check out my [**online CV**](https://cv.herbort.me)!
 
 ---
 
 ## `$ whoami` (Who am I?)
 
-I am Alberto Redondo, aka Herbort, a 24-year-old Computer Science Engineering student at [Facultad de Informática](https://informatica.ucm.es/), [Universidad Complutense de Madrid](https://ucm.es/), in Madrid, Spain. I am currently on my last year. I am also working as a trainee in a DevOps position.
+I am Alberto Redondo, aka Herbort.
 
 Ever since I was a kid, I've always been interested in technology, especially in computers, and I used to spend hours in front of my PC, tinkering with anything that caught my attention. I didn't achieve big things (I didn't even learn a single programming language), but I've always been interested in learning more and more, and people around me said computers were my thing and now I think they were right.
 

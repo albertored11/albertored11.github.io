@@ -23,13 +23,12 @@ timezone: Europe/Madrid
 
 title: Herbort                          # the main title
 
-tagline: Yet another CS student & computer enthusiast   # it will display as the sub-title
+tagline: Yet another computer enthusiast   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Herbort's personal website: a blog
   about anything related to computers
-  that a Computer Science student and
-  computer enthusiast could find
+  that a computer enthusiast could find
   interesting to share with others.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
